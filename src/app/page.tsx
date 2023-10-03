@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Calculadora from "./Calculadora";
 
 //Funcion para pedir los Tipos de Dolares
 async function getDolares() {
@@ -38,25 +39,13 @@ export default async function Home() {
         ))}
       </div>
       {/* ----------CALCULADORA DOLARES---------- */}
-      <h1 className="font-semibold text-4xl">¿Cuantos dolares tengo?</h1>
-
-
-
-
+      <div className="grid justify-center items-center mb-56">
+        <h1 className="font-semibold text-4xl">¿Cuantos dolares tengo?</h1>
+        <div className="mx-5 py-5">
+          {/* FORM */}
+          <Calculadora />
+        </div>
+      </div>
     </main>
   );
 }
-
-/* export async function getStaticProps() {
-  try {
-    const res = await fetch('https://dolarapi.com/v1/dolares');
-    const data = await res.json()
-    return {
-      props: {
-        data
-      },
-    };
-  } catch (error) {
-    console.log(error);
-  }
-} */
