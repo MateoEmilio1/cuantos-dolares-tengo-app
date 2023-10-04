@@ -16,9 +16,9 @@ export default async function Home() {
   const dolares: DolarData[] = await getDolares();
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-slate-900 dark:bg-slate-200">
+    <main className="flex min-h-screen flex-col items-center bg-slate-100">
       {/* ----------PRECIOS DOLAR---------- */}
-      <h1 className="font-semibold text-4xl mt-24 dark:text-black">Precios dolar</h1>
+      <h1 className="font-semibold text-4xl mt-24 text-black ">Precios dolar</h1>
 
       <div className="grid lg:grid-cols-3 py-4s">
         {dolares.map((dolar: DolarData) => (
@@ -26,7 +26,7 @@ export default async function Home() {
             key={dolar.casa}
             className="max-w-md rounded overflow-hidden shadow-lg bg-slate-300 mx-12 my-6"
           >
-            <div className="px-6 py-4 text-left dark:text-black">
+            <div className="px-6 py-4 text-left text-black">
               <h1 className="font-semibold text-lg">
                 Dolar {dolar.nombre} <br />
               </h1>
@@ -41,7 +41,7 @@ export default async function Home() {
       </div>
       {/* ----------CALCULADORA DOLARES---------- */}
       <div>
-      <h1 className="font-semibold  text-3xl md:text-4xl pb-8 dark:text-black">¿Cuantos dolares tengo?</h1>
+      <h1 className="font-semibold  text-3xl md:text-4xl pb-8 text-black">¿Cuantos dolares tengo?</h1>
       
       <div className="flex justify-center items-center mb-56">
         
