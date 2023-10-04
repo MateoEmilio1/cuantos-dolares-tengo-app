@@ -1,10 +1,10 @@
 import { DolarData } from "./types";
 
-async function getDolares() {
+async function getDolares(): Promise<DolarData[]> {
   const res = await fetch("https://dolarapi.com/v1/dolares", {
     cache: "no-cache",
   });
-  const data = await res.json();
+  const data: DolarData[] = await res.json();
 
   return data;
 }
@@ -14,40 +14,17 @@ export default async function buscaValorDolar(
   tipoDolar: string
 ): Promise<number | null> {
   const dolares: DolarData[] = await getDolares();
-  let cantidadDolares = 0;
+  let cantidadDolares: number | null = null;
 
   //Falta como hacer la division
   console.log(`Recibí ${cantPesos} pesos como argumento.`);
   console.log(`Recibí ${tipoDolar} tipoDolar como argumento.`);
 
-  dolares.forEach((dolar: any) => {
+  dolares.forEach((dolar) => {
     if (dolar.nombre === tipoDolar) {
       cantidadDolares = cantPesos / dolar.venta;
     }
   });
 
   return cantidadDolares;
-
 }
-
-function cantidadDolares(dolar: any, cantPesos: number, tipoDolar: string) {
-
-  if (dolar.nombre === tipoDolar) {
-
-    var cantDolares: number = cantPesos / dolar.venta;
-    /* MostrarDolares(cantDolares); */
-
-    return console.log(`La cantidad de dolares es ${Math.trunc(cantDolares)}  con el tipo ${tipoDolar} .`);;
-
-  } else {
-
-    return console.log(`Volver a testear`);
-  }
-}
-
-/* export async function MostrarDolares(cantDolares: number) {
-    <div>
-        Cantidad de dolares: {cantDolares}
-    </div>
-
-} */
