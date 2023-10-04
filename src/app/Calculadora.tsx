@@ -33,7 +33,7 @@ export default function Calculadora() {
         <input type="text" required autoComplete="off" id="tipoDolar" name="tipoDolar" />
         <button
         type="submit"
-        className="w-24 h-10 bg-gradient-to-r from-slate-400 to-slate-600 text-white dark:text-black px-2 py-1.5 rounded-md mt-8"
+        className="w-24 h-10 bg-gradient-to-r from-slate-400 to-slate-600 text-black dark:text-white px-2 py-1.5 rounded-md mt-8"
       >
         Calcular
       </button>
