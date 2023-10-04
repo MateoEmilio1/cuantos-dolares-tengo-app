@@ -1,6 +1,7 @@
 import Calculadora from "./Calculadora";
 import { DolarData } from "./types";
 
+
 //Funcion para pedir los Tipos de Dolares
 async function getDolares() {
   const res = await fetch("https://dolarapi.com/v1/dolares", {
@@ -12,7 +13,7 @@ async function getDolares() {
 }
 
 export default async function Home() {
-  const dolares = await getDolares();
+  const dolares: DolarData[] = await getDolares();
 
   return (
     <main className="flex min-h-screen flex-col items-center ">
