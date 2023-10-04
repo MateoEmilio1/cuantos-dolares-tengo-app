@@ -1,3 +1,5 @@
+import { DolarData } from "./types";
+
 async function getDolares() {
   const res = await fetch("https://dolarapi.com/v1/dolares", {
     cache: "no-cache",
@@ -10,8 +12,8 @@ async function getDolares() {
 export default async function buscaValorDolar(
   cantPesos: number,
   tipoDolar: string
-) {
-  const dolares = await getDolares();
+): Promise<number | null> {
+  const dolares: DolarData[] = await getDolares();
   let cantidadDolares = 0;
 
   //Falta como hacer la division
