@@ -24,7 +24,7 @@ export default function Calculadora() {
   return (
     <form onSubmit={handleSubmit} className=" ">
       
-      <div className="w-full flex flex-col items-center gap-6 font-semibold ">
+      <div className="w-full flex flex-col items-center gap-6 font-semibold dark:text-black">
         {/* Ingreso cantidad de pesos */}
         <label htmlFor="cant">Cantidad de pesos: </label>
         <input type="text" required autoComplete="off" id="cant" />
