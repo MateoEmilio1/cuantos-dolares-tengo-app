@@ -20,7 +20,7 @@ export default async function buscaValorDolar(
   console.log(`Recibí ${cantPesos} pesos como argumento.`);
   console.log(`Recibí ${tipoDolar} tipoDolar como argumento.`);
 
-  dolares.forEach((dolar) => {
+  dolares.forEach((dolar: DolarData) => {
     if (dolar.nombre === tipoDolar) {
       cantidadDolares = cantPesos / dolar.venta;
     }
