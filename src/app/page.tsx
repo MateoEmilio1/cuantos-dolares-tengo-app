@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Calculadora from "./Calculadora";
-import MostrarDolares from "./buscaValorDolar";
+import { DolarData } from "./types";
 
 //Funcion para pedir los Tipos de Dolares
 async function getDolares() {
@@ -21,7 +20,7 @@ export default async function Home() {
       <h1 className="font-semibold text-4xl mt-24 ">Precios dolar</h1>
 
       <div className="grid lg:grid-cols-3 py-4s">
-        {dolares.map((dolar: any) => (
+        {dolares.map((dolar: DolarData) => (
           <div
             key={dolar.casa}
             className="max-w-md rounded overflow-hidden shadow-lg bg-slate-300 mx-12 my-6"
