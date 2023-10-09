@@ -1,7 +1,6 @@
 import Calculadora from "./Calculadora";
 import { DolarData } from "./types";
 
-
 //Funcion para pedir los Tipos de Dolares
 async function getDolares() {
   const res = await fetch("https://dolarapi.com/v1/dolares", {
@@ -15,10 +14,29 @@ async function getDolares() {
 export default async function Home() {
   const dolares: DolarData[] = await getDolares();
 
+  function mostrarFecha(fechaActualizacion: string): import("react").ReactNode {
+    const originalDate: Date = new Date(fechaActualizacion);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    const formattedDate: string = originalDate.toLocaleDateString(
+      "es-ES",
+      options
+    );
+
+    return formattedDate
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center bg-slate-100">
       {/* ----------PRECIOS DOLAR---------- */}
-      <h1 className="font-semibold text-4xl mt-24 text-black ">Precios dolar</h1>
+      <h1 className="font-semibold text-4xl mt-24 text-black ">
+        Precios dolar
+      </h1>
 
       <div className="grid lg:grid-cols-3 py-4s">
         {dolares.map((dolar: DolarData) => (
@@ -33,7 +51,10 @@ export default async function Home() {
               <h1>
                 Compra: {dolar.compra} <br />
                 Venta: {dolar.venta} <br />
-                Fecha actualizacion: {dolar.fechaActualizacion} <br />
+                Fecha actualizacion: {mostrarFecha(
+                  dolar.fechaActualizacion
+                )}{" "}
+                <br />
               </h1>
             </div>
           </div>
@@ -41,16 +62,16 @@ export default async function Home() {
       </div>
       {/* ----------CALCULADORA DOLARES---------- */}
       <div>
-      <h1 className="font-semibold  text-3xl md:text-4xl pb-8 text-black">¿Cuantos dolares tengo?</h1>
-      
-      <div className="flex justify-center items-center mb-56">
-        
-        <div className="mx-5 py-5">
-          {/* FORM */}
-          <Calculadora />
-        
+        <h1 className="font-semibold  text-3xl md:text-4xl pb-8 text-black">
+          ¿Cuantos dolares tengo?
+        </h1>
+
+        <div className="flex justify-center items-center mb-56">
+          <div className="mx-5 py-5">
+            {/* FORM */}
+            <Calculadora />
+          </div>
         </div>
-      </div>
       </div>
     </main>
   );
