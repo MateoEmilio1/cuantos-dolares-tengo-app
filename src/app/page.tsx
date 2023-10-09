@@ -24,7 +24,7 @@ export default async function Home() {
       minute: "numeric",
     };
     const formattedDate: string = originalDate.toLocaleDateString(
-      "es-ES",
+      "es-AR",
       options
     );
 
