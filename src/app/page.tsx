@@ -15,8 +15,10 @@ export default async function Home() {
   const dolares: DolarData[] = await getDolares();
 
   function mostrarFecha(fechaActualizacion: string): import("react").ReactNode {
+    // Parsear la fecha en formato ISO 8601 para asegurarse de que la zona horaria sea considerada
     const originalDate: Date = new Date(fechaActualizacion);
     const options: Intl.DateTimeFormatOptions = {
+      timeZone: "America/Argentina/Buenos_Aires",
       year: "numeric",
       month: "long",
       day: "numeric",
