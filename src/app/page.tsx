@@ -22,7 +22,6 @@ export default async function Home() {
       day: "numeric",
       hour: "numeric",
       minute: "numeric",
-      timeZoneName: "short",
     };
     const formattedDate: string = originalDate.toLocaleDateString(
       "es-AR",
