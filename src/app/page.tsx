@@ -37,7 +37,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center bg-slate-100">
       {/* ----------PRECIOS DOLAR---------- */}
       <h1 className="font-semibold text-4xl mt-24 text-black ">
-        Precios dolar
+        Precios dólar
       </h1>
 
       <div className="grid lg:grid-cols-3 py-4s">
@@ -53,7 +53,7 @@ export default async function Home() {
               <h1>
                 Compra: {dolar.compra} <br />
                 Venta: {dolar.venta} <br />
-                Fecha actualizacion: {mostrarFecha(
+                Fecha actualización: {mostrarFecha(
                   dolar.fechaActualizacion
                 )}{" "}
                 <br />
@@ -65,7 +65,7 @@ export default async function Home() {
       {/* ----------CALCULADORA DOLARES---------- */}
       <div>
         <h1 className="font-semibold  text-3xl md:text-4xl pb-8 text-black">
-          ¿Cuantos dolares tengo?
+          ¿Cuantos dólares tengo?
         </h1>
 
         <div className="flex justify-center items-center mb-56">
