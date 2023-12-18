@@ -42,9 +42,9 @@ export default function Calculadora() {
           </button>
 
           {esConversionAPesos ? (
-            <div>
+            <div className="  flex flex-col items-center">
               {/* Si es conversión a pesos, muestra este formulario */}
-              <label htmlFor="cant">Cantidad de dólares: </label>
+              <label htmlFor="cant" className="pb-3">Cantidad de dólares: </label>
               <input
               placeholder="ejemplo: 25"
                 type="text"
@@ -56,9 +56,9 @@ export default function Calculadora() {
               />
             </div>
           ) : (
-            <div>
+            <div className="flex flex-col items-center">
               {/* Si es conversión a dólares, muestra este formulario */}
-              <label htmlFor="cant">Cantidad de pesos: </label>
+              <label htmlFor="cant" className="pb-3">Cantidad de pesos: </label>
               <input
                 placeholder="ejemplo: 95000"
                 type="text"
