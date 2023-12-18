@@ -90,7 +90,7 @@ export default function Calculadora() {
         </div>
       </form>
       {cantidadDolares !== null && (
-        <div className="mt-4">
+        <div className="mt-4 text-black">
           {esConversionAPesos ? (
             <span>Cantidad de pesos: {cantidadDolares.toFixed(2)}</span>
           ) : (
