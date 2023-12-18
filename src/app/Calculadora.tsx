@@ -1,60 +1,103 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import buscaValorDolar from "./buscaValorDolar";
+import buscaValorPeso from "./buscaValorPeso"; // Asumiendo que tienes una función similar para convertir de dólares a pesos
+import { IoSwapHorizontal } from "react-icons/io5";
+
 
 export default function Calculadora() {
+  const [cantidad, setCantidad] = useState("");
+  const [tipoDolar, setTipoDolar] = useState("Oficial");
   const [cantidadDolares, setCantidadDolares] = useState<number | null>(null);
+  const [esConversionAPesos, setEsConversionAPesos] = useState(false); // Nuevo estado para la dirección de la conversión
 
-  async function handleSubmit(event: any) {
-    event.preventDefault();
-
-    const data = {
-      cant: Number(event.target.cant.value),
-      tipoDolar: String(event.target.tipoDolar.value),
+  useEffect(() => {
+    const calcularConversion = async () => {
+      if (cantidad) {
+        if (esConversionAPesos) {
+          const pesos = await buscaValorPeso(Number(cantidad), tipoDolar);
+          setCantidadDolares(pesos);
+        } else {
+          const dolares = await buscaValorDolar(Number(cantidad), tipoDolar);
+          setCantidadDolares(dolares);
+        }
+      }
     };
 
-    //MANIPULAR DATA ACA
-    const dolares = await buscaValorDolar(data.cant, data.tipoDolar);
-    setCantidadDolares(dolares);
-    
+    calcularConversion();
+  }, [cantidad, tipoDolar, esConversionAPesos]);
 
-  }
+  const intercambiarDivisas = () => {
+    setEsConversionAPesos(!esConversionAPesos);
+    setCantidadDolares(null); // Resetear el resultado al cambiar la dirección
+  };
 
   return (
-    <form onSubmit={handleSubmit} className=" ">
-      
-      <div className="w-full flex flex-col items-center gap-6 font-semibold dark:text-black">
-        {/* Ingreso cantidad de pesos */}
-        <label htmlFor="cant">Cantidad de pesos: </label>
-        <input type="text" required autoComplete="off" id="cant" />
-         {/* Ingreso el tipo de Dolar */}
-         <label htmlFor="tipoDolar">Tipo de Dólar: </label>
-        <select id="tipoDolar">
-          <option value="Blue">Blue</option>
-          <option value="Oficial">Oficial</option>
-          <option value="Bolsa">Bolsa</option>
-          <option value="Contado con liquidación">Contado con liquidación</option>
-          <option value="Solidario (Turista)">Solidario (Turista)</option>
-          <option value="Mayorista">Mayorista</option>
-        </select>
-        <button
-        type="submit"
-        className="w-24 h-10 bg-gradient-to-r from-slate-400 to-slate-600 text-black dark:text-white px-2 py-1.5 rounded-md mt-8"
-      >
-        Calcular
-      </button>
-      </div>
+    <div>
+      <form className=" ">
+        <div className="w-full flex flex-col items-center gap-6 font-semibold dark:text-black">
+          {/* Botón para intercambiar divisas */}
+          <button type="button" onClick={intercambiarDivisas} className=" ">
+          <IoSwapHorizontal />
+          </button>
+
+          {esConversionAPesos ? (
+            <div>
+              {/* Si es conversión a pesos, muestra este formulario */}
+              <label htmlFor="cant">Cantidad de dólares: </label>
+              <input
+              placeholder="ejemplo: 25"
+                type="text"
+                required
+                autoComplete="off"
+                id="cant"
+                value={cantidad}
+                onChange={(e) => setCantidad(e.target.value)}
+              />
+            </div>
+          ) : (
+            <div>
+              {/* Si es conversión a dólares, muestra este formulario */}
+              <label htmlFor="cant">Cantidad de pesos: </label>
+              <input
+                placeholder="ejemplo: 95000"
+                type="text"
+                required
+                autoComplete="off"
+                id="cant"
+                value={cantidad}
+                onChange={(e) => setCantidad(e.target.value)}
+              />
+            </div>
+          )}
+
+          <label htmlFor="tipoDolar">Tipo de Dólar: </label>
+          <select
+            id="tipoDolar"
+            value={tipoDolar}
+            onChange={(e) => setTipoDolar(e.target.value)}
+          >
+            <option value="Blue">Blue</option>
+            <option value="Oficial">Oficial</option>
+            <option value="Bolsa">Bolsa</option>
+            <option value="Contado con liquidación">
+              Contado con liquidación
+            </option>
+            <option value="Mayorista">Mayorista</option>
+            <option value="Cripto">Cripto</option>
+            <option value="Tarjeta">Tarjeta</option>
+          </select>
+        </div>
+      </form>
       {cantidadDolares !== null && (
-      <div className="mt-4 dark:text-black">
-        Cantidad de dólares: {cantidadDolares.toFixed(2)}
-      </div>
-    )}
-    
-    </form>
-    
-
-
-
+        <div className="mt-4">
+          {esConversionAPesos ? (
+            <span>Cantidad de pesos: {cantidadDolares.toFixed(2)}</span>
+          ) : (
+            <span>Cantidad de dólares: {cantidadDolares.toFixed(2)}</span>
+          )}
+        </div>
+      )}
+    </div>
   );
 }

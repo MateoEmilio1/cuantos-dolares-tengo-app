@@ -64,8 +64,8 @@ export default async function Home() {
       </div>
       {/* ----------CALCULADORA DOLARES---------- */}
       <div>
-        <h1 className="font-semibold  text-3xl md:text-4xl pb-8 text-black">
-          ¿Cuantos dólares tengo?
+        <h1 className="flex justify-center items-center font-semibold  text-3xl md:text-4xl pb-8 text-black">
+          Calculadora
         </h1>
 
         <div className="flex justify-center items-center mb-56">
