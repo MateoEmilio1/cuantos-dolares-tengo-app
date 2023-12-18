@@ -35,9 +35,22 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-slate-100">
+      {/* ----------CALCULADORA DOLARES---------- */}
+      <div>
+        <h1 className="flex justify-center items-center font-semibold  text-3xl md:text-4xl pb-8 text-black">
+          Calculadora
+        </h1>
+
+        <div className="flex justify-center items-center mb-56">
+          <div className="mx-5 py-5">
+            {/* FORM */}
+            <Calculadora />
+          </div>
+        </div>
+      </div>
       {/* ----------PRECIOS DOLAR---------- */}
       <h1 className="font-semibold text-4xl mt-24 text-black ">
-        Precios dólar
+        Cotizaciones
       </h1>
 
       <div className="grid lg:grid-cols-3 py-4s">
@@ -62,19 +75,7 @@ export default async function Home() {
           </div>
         ))}
       </div>
-      {/* ----------CALCULADORA DOLARES---------- */}
-      <div>
-        <h1 className="flex justify-center items-center font-semibold  text-3xl md:text-4xl pb-8 text-black">
-          Calculadora
-        </h1>
-
-        <div className="flex justify-center items-center mb-56">
-          <div className="mx-5 py-5">
-            {/* FORM */}
-            <Calculadora />
-          </div>
-        </div>
-      </div>
+      
     </main>
   );
 }
