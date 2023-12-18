@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import buscaValorDolar from "./buscaValorDolar";
 import buscaValorPeso from "./buscaValorPeso"; // Asumiendo que tienes una función similar para convertir de dólares a pesos
+import { IoSwapHorizontal } from "react-icons/io5";
+
 
 export default function Calculadora() {
   const [cantidad, setCantidad] = useState("");
@@ -36,8 +38,7 @@ export default function Calculadora() {
         <div className="w-full flex flex-col items-center gap-6 font-semibold dark:text-black">
           {/* Botón para intercambiar divisas */}
           <button type="button" onClick={intercambiarDivisas} className=" ">
-            {/* <img src="/path-to-your-icon.png" alt="Intercambiar Divisas" /> */}{" "}
-            CAMBIARRRR
+          <IoSwapHorizontal />
           </button>
 
           {esConversionAPesos ? (
@@ -45,6 +46,7 @@ export default function Calculadora() {
               {/* Si es conversión a pesos, muestra este formulario */}
               <label htmlFor="cant">Cantidad de dólares: </label>
               <input
+              placeholder="ejemplo: 25"
                 type="text"
                 required
                 autoComplete="off"
@@ -58,6 +60,7 @@ export default function Calculadora() {
               {/* Si es conversión a dólares, muestra este formulario */}
               <label htmlFor="cant">Cantidad de pesos: </label>
               <input
+                placeholder="ejemplo: 95000"
                 type="text"
                 required
                 autoComplete="off"

@@ -26,7 +26,7 @@ export default async function buscaValorPeso(
   cantDolares: number,
   tipoDolar: string
 ): Promise<number> {
-  // Aquí obtendrías el valor de 1 peso en términos de la divisa seleccionada (ejemplo: 1 USD)
+  //Obtengo el valor de 1 peso en términos de la divisa seleccionada (ejemplo: 1 USD)
   const valorPeso: number = await getPesos(tipoDolar);
   let cantidadPesos: number = 0;
 
