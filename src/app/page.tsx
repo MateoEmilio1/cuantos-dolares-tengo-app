@@ -37,11 +37,11 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center bg-slate-100">
       {/* ----------CALCULADORA DOLARES---------- */}
       <div>
-        <h1 className="flex justify-center items-center font-semibold  text-3xl md:text-4xl pb-8 text-black">
+        <h1 className="flex justify-center items-center font-semibold  text-3xl md:text-4xl pt-10 text-black">
           Calculadora
         </h1>
 
-        <div className="flex justify-center items-center mb-56">
+        <div className="flex justify-center items-center">
           <div className="mx-5 py-5">
             {/* FORM */}
             <Calculadora />
