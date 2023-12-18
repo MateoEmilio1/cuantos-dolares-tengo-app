@@ -7,7 +7,7 @@ import { IoSwapHorizontal } from "react-icons/io5";
 
 export default function Calculadora() {
   const [cantidad, setCantidad] = useState("");
-  const [tipoDolar, setTipoDolar] = useState("Oficial");
+  const [tipoDolar, setTipoDolar] = useState("Blue");
   const [cantidadDolares, setCantidadDolares] = useState<number | null>(null);
   const [esConversionAPesos, setEsConversionAPesos] = useState(false); // Nuevo estado para la dirección de la conversión
 
