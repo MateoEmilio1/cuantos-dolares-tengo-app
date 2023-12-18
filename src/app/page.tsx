@@ -75,6 +75,18 @@ export default async function Home() {
           </div>
         ))}
       </div>
+
+      <div className="pt-20 mb-20 flex justify-center items-center">
+        <h3 className="font-bold">Coded by: </h3>
+        <a
+          className='ml-2 rounded-md bg-gradient-to-r from-cyan-500 to-teal-500 px-4 py-2 text-white'
+          href='https://www.mateoemilio.com.ar/'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          Mateo Emilio
+        </a>
+      </div>
       
     </main>
   );
